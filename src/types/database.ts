@@ -14,6 +14,8 @@ export type ThemeConfig = {
   buttonBg: string;
   buttonText: string;
   fontFamily: string;
+  custom_css?: string;
+  layout?: "standard" | "compact" | "wide";
 };
 
 export type SeoConfig = {

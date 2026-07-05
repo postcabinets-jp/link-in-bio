@@ -74,12 +74,22 @@ export function PublicProfile({
   const buttonClass = BUTTON_CLASSES[theme.buttonStyle] ?? "rounded-lg";
   const isOutline = theme.buttonStyle === "outline";
 
+  const layoutMaxWidth =
+    theme.layout === "compact"
+      ? "max-w-[360px]"
+      : theme.layout === "wide"
+        ? "max-w-[600px]"
+        : "max-w-[480px]";
+
   return (
     <div
-      className="min-h-screen flex flex-col items-center py-12 px-4"
+      className="profile-page min-h-screen flex flex-col items-center py-12 px-4"
       style={{ backgroundColor: theme.bgColor, color: theme.textColor, fontFamily: theme.fontFamily }}
     >
-      <div className="w-full max-w-[480px]">
+      {theme.custom_css && (
+        <style dangerouslySetInnerHTML={{ __html: theme.custom_css }} />
+      )}
+      <div className={`w-full ${layoutMaxWidth}`}>
         {/* Profile header */}
         <div className="text-center mb-8">
           {profile.avatar_url ? (
